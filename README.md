@@ -19,45 +19,45 @@
 ## 使用方法
 
 ```
-        let img = new Image();
-        img.src = './img/like0'+Math.ceil(Math.random()*3)+'.png';
+    let img = new Image();
+    img.src = './img/like0'+Math.ceil(Math.random()*3)+'.png';
 
 
-        let p1 = {
-            x: 100 + getRandomDis(),
-            y: 300 + getRandomDis()
-        };
+    let p1 = {
+        x: 100 + getRandomDis(),
+        y: 300 + getRandomDis()
+    };
 
-        let p2 = {
-            x: 100 + getRandomDis(),
-            y: 200 + getRandomDis()
-        };
+    let p2 = {
+        x: 100 + getRandomDis(),
+        y: 200 + getRandomDis()
+    };
 
-        new LikeHeart({
-            id: heartCount,
-            x: 200,
-            y: 200,
-            endX: 200,
-            endY: 200,
-            onFadeOut: removeItem,
+    new LikeHeart({
+        id: heartCount,
+        x: 200,
+        y: 200,
+        endX: 200,
+        endY: 200,
+        onFadeOut: removeItem,
 
-            width: 66,
-            height: 66,
-            image: img,
-            bezierPoint: {
-                p0: {
-                    x: 200,
-                    y: 200
-                },
+        width: 66,
+        height: 66,
+        image: img,
+        bezierPoint: {
+            p0: {
+                x: 200,
+                y: 200
+            },
 
-                p1: p1,
-                p2: p2,
-                p3: {
-                    x: 200,
-                    y: 200
-                }
+            p1: p1,
+            p2: p2,
+            p3: {
+                x: 200,
+                y: 200
             }
-        });
+        }
+    });
 ```
 
 ## 配置说明
