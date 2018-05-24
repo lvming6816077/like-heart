@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LikeHeart</title>
+
+<style type="text/css">  
+  canvas {
+      width: 100px;
+      height: 200px;
+  }
+</style>
+</head>
+<body>
+    <canvas id="cvs"></canvas>
+    <script type="text/javascript" src="../index.js"></script>
+<script>
+
+
+    var ctx = document.getElementById('cvs').getContext('2d'),
+        width  = 200,
+        height = 400,
+        heartList = [],
+        heartCount = 0;
+
+        ctx.canvas.width = width;
+        ctx.canvas.height = height;
+
+
+    function getRandomDis(){
+        if (Math.random() > 0.5) {
+           return -(Math.random() * 43);
+        } else {
+           return +(Math.random() * 43);
+        }
+    }
+    function createHeart()  {
+        heartCount ++;
+
+        let positionArray = [{
+            x: 100,
+            y: 400,
+            endX: 100,
+            endY: 100
+        }];
+        let img = new Image();
+        img.src = './img/like0'+Math.ceil(Math.random()*3)+'.png';
+
+
+        let p1 = {
+            x: 100 + getRandomDis(),
+            y: 300 + getRandomDis()
+        };
+
+        let p2 = {
+            x: 100 + getRandomDis(),
+            y: 200 + getRandomDis()
+        };
+
+        return new LikeHeart({
+            id: heartCount,
+            x: positionArray[0].x,
+            y: positionArray[0].y,
+            endX: positionArray[0].endX,
+            endY: positionArray[0].endY,
+            onFadeOut: removeItem,
+
+            width: 66,
+            height: 66,
+            image: img,
+            bezierPoint: {
+                p0: {
+                    x: positionArray[0].x,
+                    y: positionArray[0].y
+                },
+
+                p1: p1,
+                p2: p2,
+                p3: {
+                    x: positionArray[0].endX,
+                    y: positionArray[0].endY
+                }
+            }
+        });
+
+    }
+
+    function removeItem(item){
+        var array = [];
+        for (var i = 0 ; i < heartList.length ; i++) {
+            if (heartList[i].id !== item.id) {
+                array.push(heartList[i]);
+            }
+        }
+
+        heartList = array;
+    }
+
+
+
+    (function loop () {
+      ctx.clearRect(0, 0, width, height); 
+      heartList.forEach(function (item) {
+        item && item.move(ctx);
+      });
+      requestAnimationFrame(loop);
+    }());
+
+
+    setInterval(function(){
+
+        heartList.push(createHeart());
+
+    }, 700);
+
+    document.getElementById('cvs').addEventListener('click', function(){
+        heartList.push(createHeart());
+    }, false);
+</script>
+</body>
+</html>
