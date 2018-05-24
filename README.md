@@ -13,7 +13,7 @@
 
 ## 示例
 
-<img src="<img src="https://oc5n93kni.qnssl.com/image/heart.gif"/>"/>
+<img src="https://oc5n93kni.qnssl.com/image/heart.gif"/>
 
 ## 使用方法
 
