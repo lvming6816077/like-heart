@@ -107,14 +107,16 @@
         }
         let _angle = heart.angle;
 
+        // 心介于[start, end]之间不断变化角度
         if(_angle >= heart.angelEnd) {
-
+            // 角度不断变小，向左摇摆
             heart.angleLeft = false;
         } else if (_angle <= heart.angelBegin){
-
+            // 角度不断变大，向又摇摆
             heart.angleLeft = true;
         }
 
+        // 动态改变角度
         if (heart.angleLeft) {
             _angle = _angle + 1;
         } else {
@@ -127,7 +129,7 @@
 
 
     /**
-     * 计算透明度的方法
+     * 计算缩放角度的方法
      */
     function getFScale(heart){
         if (heart.noScale) {
@@ -135,8 +137,12 @@
         }
         let _scale = heart.scale;
 
+
+        // 随着距离起始点的距离增加，scale不断变大
         let dis = heart.orignY - heart.y;
         _scale = (dis / heart.scaleDis);
+
+        // 当大于设置的阈值时变成1
         if (dis >= heart.scaleDis) {
             _scale = 1;
         }

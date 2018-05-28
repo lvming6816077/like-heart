@@ -9,6 +9,7 @@
   canvas {
       width: 100px;
       height: 200px;
+      margin-left: 128px;
   }
 </style>
 </head>
@@ -29,6 +30,7 @@
 
 
     function getRandomDis(){
+
         if (Math.random() > 0.5) {
            return -(Math.random() * 43);
         } else {
@@ -65,7 +67,8 @@
             endX: positionArray[0].endX,
             endY: positionArray[0].endY,
             onFadeOut: removeItem,
-
+            // noAngel: true,
+            // noScale: true,
             width: 66,
             height: 66,
             image: img,
@@ -93,7 +96,7 @@
                 array.push(heartList[i]);
             }
         }
-
+        heartList = [];
         heartList = array;
     }
 
@@ -106,6 +109,7 @@
       });
       requestAnimationFrame(loop);
     }());
+
 
 
     setInterval(function(){
