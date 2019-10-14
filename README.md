@@ -13,7 +13,7 @@
 
 ## 示例
 
-<img src="https://qiniu.nihaoshijie.com.cn/image/heart.gif"/>
+![](https://qiniu.nihaoshijie.com.cn/image/heart.gif)
 
 ## 使用方法
 
